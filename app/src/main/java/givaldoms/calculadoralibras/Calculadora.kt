@@ -11,32 +11,35 @@ data class Calculadora(
         var numero2: Int = 0,
         var operacao: Int = 0/*0 => +, 1 => -, 2 => * */) {
 
-
     fun gerarValores() {
         val r = Random()
+        this.operacao = r.nextInt(3)
+
         this.numero1 = r.nextInt(9)
         this.numero2 = r.nextInt(9)
-        this.operacao = r.nextInt(3)
+
+        if(operacao == 1) {//subtração
+            while (this.numero2 > this.numero1) {
+                this.numero1 = r.nextInt(9)
+                this.numero2 = r.nextInt(9)
+            }
+        }
+
+    }
+
+    fun getRespostaCorreta() = when (operacao) {
+        0 -> { numero1 + numero2 }
+
+        1 -> { numero1 - numero2 }
+
+        2 -> { numero1 * numero2 }
+
+        else -> throw Exception("$operacao deve ser um valor entre 0 e 2")
+
     }
 
 
-    fun isRespostaCorreta(resposta: Int) = when (operacao) {
-        0 -> {
-            (numero1 + numero2) == resposta
-        }
-
-        1 -> {
-            true
-            //resultado = numero1 + numero2
-        }
-
-        2 -> {
-            (numero1 * numero2) == resposta
-        }
-        else -> {
-            true
-        }
-    }
+    fun isRespostaCorreta(resposta: Int) = getRespostaCorreta() == resposta
 
     fun getSinalOperacao() = when (this.operacao) {
         0 -> '+'

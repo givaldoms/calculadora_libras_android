@@ -5,42 +5,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    tools:layout_editor_absoluteY="81dp">
+    tools:layout_editor_absoluteY="81dp"
+    android:background="@android:color/darker_gray">
 
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/valor1ImageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="fitCenter"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
-        android:src="@drawable/img_libas_tres"
-        app:layout_constraintEnd_toStartOf="@+id/textView"
+        android:background="@android:color/white"
+        android:src="@drawable/img_libras_tres"
+        app:layout_constraintEnd_toStartOf="@+id/sinalTextView"
         app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/sinalTextView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
         android:text="+"
         android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+        app:layout_constraintBottom_toBottomOf="@+id/valor1ImageView"
+        app:layout_constraintEnd_toStartOf="@+id/valor2ImageView"
+        app:layout_constraintStart_toEndOf="@+id/valor1ImageView"
+        app:layout_constraintTop_toTopOf="@+id/valor1ImageView" />
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:id="@+id/valor2ImageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginEnd="24dp"
-        android:src="@drawable/img_libas_tres"
+        android:src="@drawable/img_libras_tres"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+        app:layout_constraintStart_toEndOf="@+id/sinalTextView"
+        app:layout_constraintTop_toTopOf="@+id/valor1ImageView" />
+
+    <TextView
+        android:id="@+id/respostaTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <GridLayout
         android:layout_width="wrap_content"
@@ -55,66 +64,106 @@
 
         <ImageButton
             android:id="@+id/umImageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="4dp"
+            android:background="@android:color/white"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/img_libras_um" />
 
         <ImageButton
             android:id="@+id/doisImageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="4dp"
+            android:background="@android:color/white"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/img_libras_um" />
+            app:srcCompat="@drawable/img_libras_dois" />
 
         <ImageButton
             android:id="@+id/tresImageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="4dp"
+            android:background="@android:color/white"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/img_libras_um" />
+            app:srcCompat="@drawable/img_libras_tres" />
 
         <ImageButton
             android:id="@+id/quatroImageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="4dp"
+            android:background="@android:color/white"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/img_libras_um" />
+            app:srcCompat="@drawable/img_libras_quatro" />
 
         <ImageButton
             android:id="@+id/cincoImageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="4dp"
+            android:background="@android:color/white"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/img_libras_um" />
+            app:srcCompat="@drawable/img_libras_cinco" />
 
         <ImageButton
             android:id="@+id/seisImageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="4dp"
+            android:background="@android:color/white"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/img_libras_um" />
+            app:srcCompat="@drawable/img_libras_seis" />
 
         <ImageButton
             android:id="@+id/seteImageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="4dp"
+            android:background="@android:color/white"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/img_libras_um" />
+            app:srcCompat="@drawable/img_libras_sete" />
 
         <ImageButton
             android:id="@+id/oitoImageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="4dp"
+            android:background="@android:color/white"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/img_libras_um" />
+            app:srcCompat="@drawable/img_libras_oito" />
 
         <ImageButton
             android:id="@+id/noveImageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="4dp"
+            android:background="@android:color/white"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/img_libras_um" />
+            app:srcCompat="@drawable/img_libras_nove" />
+
+        <View
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="4dp" />
+
+        <ImageButton
+            android:id="@+id/zeroImageButton"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="4dp"
+            android:background="@android:color/white"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/img_libras_zero" />
+
+        <Button
+            android:id="@+id/responderButton"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="4dp"
+            android:scaleType="fitCenter"
+            android:text="OK" />
 
     </GridLayout>
 
