@@ -4,18 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
     tools:context=".MainActivity"
-    tools:layout_editor_absoluteY="81dp"
-    android:background="@android:color/darker_gray">
+    tools:layout_editor_absoluteY="81dp">
 
     <ImageView
         android:id="@+id/valor1ImageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:scaleType="fitCenter"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
-        android:background="@android:color/white"
+        android:background="@drawable/bg_botao_calculadora"
+        android:scaleType="fitCenter"
         android:src="@drawable/img_libras_tres"
         app:layout_constraintEnd_toStartOf="@+id/sinalTextView"
         app:layout_constraintHorizontal_bias="0.448"
@@ -28,18 +28,27 @@
         android:layout_height="0dp"
         android:gravity="center"
         android:text="+"
+        android:textColor="@android:color/black"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="@+id/valor1ImageView"
         app:layout_constraintEnd_toStartOf="@+id/valor2ImageView"
         app:layout_constraintStart_toEndOf="@+id/valor1ImageView"
         app:layout_constraintTop_toTopOf="@+id/valor1ImageView" />
 
+    <TextView
+        android:id="@+id/tempoTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="100" />
+
     <ImageView
-        android:background="@android:color/white"
         android:id="@+id/valor2ImageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginEnd="24dp"
+        android:background="@drawable/bg_botao_calculadora"
         android:src="@drawable/img_libras_tres"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -49,25 +58,30 @@
     <TextView
         android:id="@+id/respostaTextView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sinalTextView" />
 
     <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginStart="0dp"
+        android:layout_marginTop="8dp"
         android:columnCount="3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/respostaTextView">
 
         <ImageButton
             android:id="@+id/umImageButton"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="4dp"
-            android:background="@android:color/white"
+            android:background="@drawable/bg_botao_calculadora"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/img_libras_um" />
 
@@ -76,7 +90,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="4dp"
-            android:background="@android:color/white"
+            android:background="@drawable/bg_botao_calculadora"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/img_libras_dois" />
 
@@ -85,7 +99,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="4dp"
-            android:background="@android:color/white"
+            android:background="@drawable/bg_botao_calculadora"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/img_libras_tres" />
 
@@ -94,7 +108,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="4dp"
-            android:background="@android:color/white"
+            android:background="@drawable/bg_botao_calculadora"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/img_libras_quatro" />
 
@@ -103,7 +117,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="4dp"
-            android:background="@android:color/white"
+            android:background="@drawable/bg_botao_calculadora"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/img_libras_cinco" />
 
@@ -112,7 +126,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="4dp"
-            android:background="@android:color/white"
+            android:background="@drawable/bg_botao_calculadora"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/img_libras_seis" />
 
@@ -121,7 +135,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="4dp"
-            android:background="@android:color/white"
+            android:background="@drawable/bg_botao_calculadora"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/img_libras_sete" />
 
@@ -130,7 +144,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="4dp"
-            android:background="@android:color/white"
+            android:background="@drawable/bg_botao_calculadora"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/img_libras_oito" />
 
@@ -139,7 +153,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="4dp"
-            android:background="@android:color/white"
+            android:background="@drawable/bg_botao_calculadora"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/img_libras_nove" />
 
@@ -153,7 +167,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="4dp"
-            android:background="@android:color/white"
+            android:background="@drawable/bg_botao_calculadora"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/img_libras_zero" />
 

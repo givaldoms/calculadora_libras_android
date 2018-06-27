@@ -18,7 +18,7 @@ data class Calculadora(
         this.numero1 = r.nextInt(9)
         this.numero2 = r.nextInt(9)
 
-        if(operacao == 1) {//subtração
+        if (operacao == 1) {//subtração
             while (this.numero2 > this.numero1) {
                 this.numero1 = r.nextInt(9)
                 this.numero2 = r.nextInt(9)
@@ -28,11 +28,17 @@ data class Calculadora(
     }
 
     fun getRespostaCorreta() = when (operacao) {
-        0 -> { numero1 + numero2 }
+        0 -> {
+            numero1 + numero2
+        }
 
-        1 -> { numero1 - numero2 }
+        1 -> {
+            numero1 - numero2
+        }
 
-        2 -> { numero1 * numero2 }
+        2 -> {
+            numero1 * numero2
+        }
 
         else -> throw Exception("$operacao deve ser um valor entre 0 e 2")
 

@@ -1,11 +1,15 @@
 package givaldoms.calculadoralibras
 
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.alert
+import org.jetbrains.anko.okButton
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,9 +17,15 @@ class MainActivity : AppCompatActivity() {
         Calculadora()
     }
 
+    private var mTempoAtual = 120
+    private var mPontuacao = 0
+    private lateinit var mContador: CountDownTimer
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        iniciaContador()
     }
 
     override fun onStart() {
@@ -23,12 +33,13 @@ class MainActivity : AppCompatActivity() {
 
         responderButton.setOnClickListener {
             responder()
+            novosValores()
         }
 
         configurarBotoes()
-        atualizarView()
-
+        novoJogo()
     }
+
 
     private fun configurarBotoes() {
 
@@ -74,9 +85,8 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun atualizarView() {
+    private fun novosValores() {
         calculadora.gerarValores()
-
         respostaTextView.text = ""
 
         sinalTextView.text = calculadora.getSinalOperacao().toString()
@@ -86,7 +96,21 @@ class MainActivity : AppCompatActivity() {
 
         valor1ImageView.setImageDrawable(drawableValor1)
         valor2ImageView.setImageDrawable(drawableValor2)
+    }
 
+    private fun novoJogo() {
+        novosValores()
+        mPontuacao = 0
+        mTempoAtual = 120
+
+        mContador.cancel()
+        mContador.start()
+
+    }
+
+    override fun onStop() {
+        super.onStop()
+        mContador.cancel()
     }
 
     private fun responder() {
@@ -98,10 +122,11 @@ class MainActivity : AppCompatActivity() {
 
         if (calculadora.isRespostaCorreta(resposta)) {
             Toast.makeText(this, "Resposta correta", Toast.LENGTH_SHORT).show()
+            mPontuacao++
         } else {
             Toast.makeText(this, "Resposta incorreta", Toast.LENGTH_SHORT).show()
         }
-        atualizarView()
+
     }
 
     private fun getLibrasDrawable(number: Int) = when (number) {
@@ -121,5 +146,27 @@ class MainActivity : AppCompatActivity() {
     private fun TextView.concatenar(valor: String) {
         val c = "${this.text}$valor"
         this.text = c
+    }
+
+    private fun iniciaContador() {
+        mContador = object : CountDownTimer(60 * 1000, 1000) {
+
+            override fun onTick(millisUntilFinished: Long) {
+                val t = "Tempo restante: " + millisUntilFinished / 1000
+                tempoTextView.text = t
+            }
+
+            override fun onFinish() {
+                alert("Sua pontuação foi $mPontuacao",
+                        "Tempo esgotado") {
+                    isCancelable = false
+                    okButton {
+                        novoJogo()
+                    }
+                }.show()
+
+            }
+        }
+
     }
 }
