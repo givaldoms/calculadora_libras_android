@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/darker_gray"
     tools:context=".MainActivity"
+    android:background="#FFF"
     tools:layout_editor_absoluteY="81dp">
 
     <ImageView
         android:id="@+id/valor1ImageView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="24dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="28dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/bg_botao_calculadora"
         android:scaleType="fitCenter"
@@ -20,14 +20,14 @@
         app:layout_constraintEnd_toStartOf="@+id/sinalTextView"
         app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/pontuacaoTextView" />
 
     <TextView
         android:id="@+id/sinalTextView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
-        android:text="+"
+        tools:text="+"
         android:textColor="@android:color/black"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="@+id/valor1ImageView"
@@ -36,36 +36,44 @@
         app:layout_constraintTop_toTopOf="@+id/valor1ImageView" />
 
     <TextView
+        android:visibility="gone"
         android:id="@+id/tempoTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="43dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/valor1ImageView"
         tools:text="100" />
 
     <ImageView
         android:id="@+id/valor2ImageView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginEnd="24dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="28dp"
         android:background="@drawable/bg_botao_calculadora"
         android:src="@drawable/img_libras_tres"
+        app:layout_constraintBottom_toTopOf="@+id/respostaTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/sinalTextView"
-        app:layout_constraintTop_toTopOf="@+id/valor1ImageView" />
+        app:layout_constraintTop_toTopOf="@+id/sinalTextView"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/respostaTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sinalTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/sinalTextView"
+        tools:text="120" />
 
     <GridLayout
+        android:id="@+id/gridLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -74,112 +82,134 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/respostaTextView">
+        app:layout_constraintTop_toBottomOf="@+id/respostaTextView"
+        app:layout_constraintVertical_bias="1.0">
 
         <ImageButton
             android:id="@+id/umImageButton"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_margin="4dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="8dp"
             android:background="@drawable/bg_botao_calculadora"
-            android:scaleType="fitCenter"
+            android:scaleType="centerInside"
             app:srcCompat="@drawable/img_libras_um" />
 
         <ImageButton
             android:id="@+id/doisImageButton"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_margin="4dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="8dp"
             android:background="@drawable/bg_botao_calculadora"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/img_libras_dois" />
 
         <ImageButton
             android:id="@+id/tresImageButton"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_margin="4dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="8dp"
             android:background="@drawable/bg_botao_calculadora"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/img_libras_tres" />
 
         <ImageButton
             android:id="@+id/quatroImageButton"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_margin="4dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="8dp"
             android:background="@drawable/bg_botao_calculadora"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/img_libras_quatro" />
 
         <ImageButton
             android:id="@+id/cincoImageButton"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_margin="4dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="8dp"
             android:background="@drawable/bg_botao_calculadora"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/img_libras_cinco" />
 
         <ImageButton
             android:id="@+id/seisImageButton"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_margin="4dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="8dp"
             android:background="@drawable/bg_botao_calculadora"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/img_libras_seis" />
 
         <ImageButton
             android:id="@+id/seteImageButton"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_margin="4dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="8dp"
             android:background="@drawable/bg_botao_calculadora"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/img_libras_sete" />
 
         <ImageButton
             android:id="@+id/oitoImageButton"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_margin="4dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="8dp"
             android:background="@drawable/bg_botao_calculadora"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/img_libras_oito" />
 
         <ImageButton
             android:id="@+id/noveImageButton"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_margin="4dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="8dp"
             android:background="@drawable/bg_botao_calculadora"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/img_libras_nove" />
 
-        <View
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_margin="4dp" />
+        <Button
+            android:text="Apagar"
+            android:id="@+id/apagarButton"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="8dp" />
 
         <ImageButton
             android:id="@+id/zeroImageButton"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_margin="4dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="8dp"
             android:background="@drawable/bg_botao_calculadora"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/img_libras_zero" />
 
         <Button
             android:id="@+id/responderButton"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_margin="4dp"
-            android:scaleType="fitCenter"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="8dp"
             android:text="OK" />
 
     </GridLayout>
+
+    <ProgressBar
+        android:id="@+id/timeProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/pontuacaoTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="Pontuação: 0"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeProgressBar" />
 
 
 </android.support.constraint.ConstraintLayout>

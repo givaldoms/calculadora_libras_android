@@ -3,13 +3,15 @@ package givaldoms.calculadoralibras
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.support.v7.app.AppCompatActivity
+import android.text.Editable
 import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.alert
-import org.jetbrains.anko.okButton
 
+
+const val TEMPO_MAXIMO = 60// em segundos
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,6 +28,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         iniciaContador()
+
+        timeProgressBar.max = TEMPO_MAXIMO - 1
     }
 
     override fun onStart() {
@@ -34,6 +38,10 @@ class MainActivity : AppCompatActivity() {
         responderButton.setOnClickListener {
             responder()
             novosValores()
+        }
+
+        apagarButton.setOnClickListener {
+            respostaTextView.apagarUltimo()
         }
 
         configurarBotoes()
@@ -96,15 +104,17 @@ class MainActivity : AppCompatActivity() {
 
         valor1ImageView.setImageDrawable(drawableValor1)
         valor2ImageView.setImageDrawable(drawableValor2)
+
+        atualizarPontuacao()
     }
 
     private fun novoJogo() {
         novosValores()
         mPontuacao = 0
         mTempoAtual = 120
-
         mContador.cancel()
         mContador.start()
+        atualizarPontuacao()
 
     }
 
@@ -121,12 +131,10 @@ class MainActivity : AppCompatActivity() {
                         " ${calculadora.numero2} = ${calculadora.getRespostaCorreta()}")
 
         if (calculadora.isRespostaCorreta(resposta)) {
-            Toast.makeText(this, "Resposta correta", Toast.LENGTH_SHORT).show()
             mPontuacao++
         } else {
             Toast.makeText(this, "Resposta incorreta", Toast.LENGTH_SHORT).show()
         }
-
     }
 
     private fun getLibrasDrawable(number: Int) = when (number) {
@@ -148,19 +156,46 @@ class MainActivity : AppCompatActivity() {
         this.text = c
     }
 
+    private fun TextView.apagarUltimo() {
+        val t = this.text
+
+        when {
+            t.isEmpty() -> return
+
+            t.length == 1 -> {
+                this.text = Editable.Factory.getInstance().newEditable("")
+            }
+
+            else -> {
+                val t2 = t.subSequence(0, t.length - 1)
+                this.text = Editable.Factory.getInstance().newEditable(t2)
+
+            }
+        }
+
+    }
+
+    private fun atualizarPontuacao() {
+        val pontuacaoText = "Pontuação: $mPontuacao"
+        pontuacaoTextView.text = pontuacaoText
+    }
+
     private fun iniciaContador() {
-        mContador = object : CountDownTimer(60 * 1000, 1000) {
+        mContador = object : CountDownTimer(TEMPO_MAXIMO * 1000.toLong(), 1000) {
 
             override fun onTick(millisUntilFinished: Long) {
-                val t = "Tempo restante: " + millisUntilFinished / 1000
+                val time = (millisUntilFinished / 1000).toInt()
+                val t = "Tempo restante: $time"
+
+                timeProgressBar.progress = time
                 tempoTextView.text = t
             }
 
             override fun onFinish() {
-                alert("Sua pontuação foi $mPontuacao",
+                alert("Sua pontuação: $mPontuacao",
                         "Tempo esgotado") {
                     isCancelable = false
-                    okButton {
+                    positiveButton("Novo jogo") {
                         novoJogo()
                     }
                 }.show()
